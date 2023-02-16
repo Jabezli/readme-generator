@@ -30,8 +30,6 @@ Please visit [License link](https://choosealicense.com/licenses/mit/)
 ## Contributing
 Currently I am the only person developing this project. Should you long to contribute, please feel free to reach out using "Issues"
 
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
-
 ## Tests
 <sub>Multiple tests were run to ensure all features performed functionally. </sub>
 
