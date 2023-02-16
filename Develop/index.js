@@ -5,7 +5,7 @@ const fs = require ('fs');
 // I don't know how to apply ...rest here. should I have an array to store everything first?
 const generateReadMe = ({ title, description, installation, usage, license, contributing, tests, email, github}) =>
 `
-# ${title} 
+#${title} 
 
 <sub>![License](https://img.shields.io/badge/License-${license.split('-').join('')}-blue.svg)</sub>
 
@@ -36,13 +36,12 @@ Please visit [License link](https://choosealicense.com/licenses/${license.split(
 ## Contributing
 ${contributing}
 
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
 
 ## Tests
 <sub>${tests}</sub>
 
 ## Questions
-<sub>Feel free to submit your questions under the ISSUES of the repository [(Click Here)](https://github.com/${github}) or email me at [your email](mailto:${email})</sub>
+<sub>Feel free to submit your questions under the ISSUES of the repository [(Click Here to Visit My Github Page)](https://github.com/${github}) or email me at [your email](mailto:${email})</sub>
 `;
 
 
@@ -103,7 +102,7 @@ function prompt(){inquirer
 ])
 .then((answers) => {
     const readMeContent = generateReadMe(answers);
-   fs.writeFile(`./readmes/${answers.title}.md`, readMeContent, (err)=>{
+    fs.writeFile(`./readmes/${answers.title}.md`, readMeContent, (err)=>{
     err? console.log(err) : console.log("Readme file has been generated. Please go ahead and see if any changes are needed")
    })
 });
