@@ -3,7 +3,7 @@ const fs = require ('fs');
 
 const generateReadMe = ({ title, description, installation, usage, license, contributing, tests, email, github}) =>
 `
-#${title} 
+# ${title} 
 
 <sub>![License](https://img.shields.io/badge/License-${license.split('-').join('')}-blue.svg)</sub>
 
