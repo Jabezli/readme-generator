@@ -1,8 +1,6 @@
-// TODO: Include packages needed for this application
 const inquirer = require ('inquirer');
 const fs = require ('fs');
-// TODO: Create an array of questions for user input
-// I don't know how to apply ...rest here. should I have an array to store everything first?
+
 const generateReadMe = ({ title, description, installation, usage, license, contributing, tests, email, github}) =>
 `
 #${title} 
