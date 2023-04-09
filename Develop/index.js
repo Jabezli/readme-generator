@@ -1,11 +1,23 @@
-const inquirer = require ('inquirer');
-const fs = require ('fs');
+const inquirer = require("inquirer");
+const fs = require("fs");
 
-const generateReadMe = ({ title, description, installation, usage, license, contributing, tests, email, github}) =>
-`
+const generateReadMe = ({
+  title,
+  description,
+  installation,
+  usage,
+  license,
+  contributing,
+  tests,
+  email,
+  github,
+}) =>
+  `
 # ${title} 
 
-<sub>![License](https://img.shields.io/badge/License-${license.split('-').join('')}-blue.svg)</sub>
+<sub>![License](https://img.shields.io/badge/License-${license
+    .split("-")
+    .join("")}-blue.svg)</sub>
 
 ### Description
 
@@ -20,95 +32,103 @@ ___
 * [Questions](#questions)
 ___
 
-## Installation
+## 💾 Installation
 <sub>${installation}</sub>
 
-## Usage
+## 🎛️ Usage
 <sub>${usage}</sub>
 
-## License
+## ⚖️ License
 
-Please visit [License link](https://choosealicense.com/licenses/${license.split(' ').join('').toLowerCase()}/)
+Please visit [License link](https://choosealicense.com/licenses/${license
+    .split(" ")
+    .join("")
+    .toLowerCase()}/)
 
 
-## Contributing
+## 🏗️ Contributing
 ${contributing}
 
 
-## Tests
+## 📏 Tests
 <sub>${tests}</sub>
 
-## Questions
+## ❓Questions
 <sub>Feel free to submit your questions under the ISSUES of the repository [(Click Here to Visit My Github Page)](https://github.com/${github}) or email me at [your email](mailto:${email})</sub>
 `;
 
-
-
-function prompt(){inquirer
-  .prompt([
-    {
-        type: 'input',
-        name: 'title',
-        message: 'What is the name of your project',
-    },
-    {
-      type: 'input',
-      name: 'description',
-      message: `Please briefly describe your project. Please attempt to have your answers covering the following questions
+function prompt() {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "title",
+        message: "What is the name of your project",
+      },
+      {
+        type: "input",
+        name: "description",
+        message: `Please briefly describe your project. Please attempt to have your answers covering the following questions
         - What was your motivation?
         - Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
         - What problem does it solve?
         - What did you learn?
         - What makes your project stand out?`,
-    },
-    {
-      type: 'input',
-      name: 'installation',
-      message: 'What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.',
-    },
-    {
-      type: 'input',
-      name: 'usage',
-      message: 'Provide instructions and examples for use.',
-    },
-    {
-      type: 'list',
-      name: 'license',
-      message: 'What is your license type?',
-      choices:['MIT', `agpl-3.0`,`mpl-2.0`,`apache-2.0`,`bsl-1.0`]
-    },
-    {
-      type: 'input',
-      name: 'contributing',
-      message: 'How would you like people to contribute your project?',
-    },
-    {
-      type: 'input',
-      name: 'tests',
-      message: 'Go the extra mile and write tests for your application. Then provide examples on how to run them here.',
-    },
-    {
-      type: 'input',
-      name: 'email',
-      message: 'Please enter your email address',
-    },
-    {
-      type: 'input',
-      name: 'github',
-      message: 'Please enter your Github username',
-    },
-])
-.then((answers) => {
-    const readMeContent = generateReadMe(answers);
-    fs.writeFile(`./readmes/${answers.title}.md`, readMeContent, (err)=>{
-    err? console.log(err) : console.log("Readme file has been generated. Please go ahead and see if any changes are needed")
-   })
-});
+      },
+      {
+        type: "input",
+        name: "installation",
+        message:
+          "What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.",
+      },
+      {
+        type: "input",
+        name: "usage",
+        message: "Provide instructions and examples for use.",
+      },
+      {
+        type: "list",
+        name: "license",
+        message: "What is your license type?",
+        choices: ["MIT", `agpl-3.0`, `mpl-2.0`, `apache-2.0`, `bsl-1.0`],
+      },
+      {
+        type: "input",
+        name: "contributing",
+        message: "How would you like people to contribute your project?",
+      },
+      {
+        type: "input",
+        name: "tests",
+        message:
+          "Go the extra mile and write tests for your application. Then provide examples on how to run them here.",
+      },
+      {
+        type: "input",
+        name: "email",
+        message: "Please enter your email address",
+      },
+      {
+        type: "input",
+        name: "github",
+        message: "Please enter your Github username",
+      },
+    ])
+    .then((answers) => {
+      const readMeContent = generateReadMe(answers);
+      fs.writeFile(`./readmes/${answers.title}.md`, readMeContent, (err) => {
+        err
+          ? console.log(err)
+          : console.log(
+              "Readme file has been generated. Please go ahead and see if any changes are needed"
+            );
+      });
+    });
 }
 
 function init() {
-    console.log(`Free Readme Generator App`);
-    prompt()
-};
+  console.log(`Free Readme Generator App`);
+  prompt();
+}
 
 init();
